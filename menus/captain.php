@@ -31,7 +31,7 @@ echo "</h2>"
 <nav
   class="navbar navbar-default"
   style = "background-color:#33D"
-  >
+>
 <div class="container-fluid">
 <div class="row" style="background-color:#33D; padding-top:9px">
 

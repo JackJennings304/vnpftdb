@@ -5,6 +5,7 @@ include "$php_root/call_stack_functions.php";
 ?>
 <?php call_stack_clear(); ?>
 <?php call_stack_add(who_am_i()); ?>
+<?php $_SESSION['Cur_top_menu'] = "/vnpftdb/menus/sysadmin.php"; ?>
 
 <html>
 

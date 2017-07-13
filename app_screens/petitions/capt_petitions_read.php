@@ -32,6 +32,14 @@ $petn_num = $_GET['petn_num'];
       Back
       </a>
     </div>
+    <div class = "col-sm-1">
+      <a
+        href  = "<?php echo $_SESSION['Cur_top_menu']; ?>"
+        class = "btn btn-success"
+      >
+      Main Menu
+      </a>
+    </div>
   </div>
   <br>
   <div class = "form-group">

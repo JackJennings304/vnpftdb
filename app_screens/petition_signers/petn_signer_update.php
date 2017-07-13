@@ -265,6 +265,17 @@ mysqli_close($ftdb);
 <div class="col-md-12">
 
 <div class="page-header">
+  <div class = "form-group">
+    <div class = "col-sm-1">
+      <a
+        href  = "<?php echo $_SESSION['Cur_top_menu']; ?>"
+        class = "btn btn-success"
+      >
+      Main Menu
+      </a>
+    </div>
+  </div>
+  <br>
   <h2>Update Signers, Phones, Emails, Petition # <?php echo $petn_num; ?></h2>
 </div>
 

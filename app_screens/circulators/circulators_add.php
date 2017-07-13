@@ -52,6 +52,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class="col-md-12">
 
 <div class="page-header">
+  <div class = "form-group">
+    <div class = "col-sm-1">
+      <a
+        href  = "<?php echo $_SESSION['Cur_top_menu']; ?>"
+        class = "btn btn-success"
+      >
+      Main Menu
+      </a>
+    </div>
+  </div>
+  <br>
   <h1>VNP Field Team Database</h1>
   <h2>Create Circulator</h2>
 </div>

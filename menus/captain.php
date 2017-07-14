@@ -12,7 +12,7 @@ include "$php_root/call_stack_functions.php";
 <head>
   <?php include "$php_root/bootstrap_external_refs.php"; ?>
   <title>Captains Menu</title>
-  <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="/vntftdb/images/favicon.ico" />
 </head>
 
 <body>
@@ -21,12 +21,12 @@ include "$php_root/call_stack_functions.php";
 <?php include "$php_root/header_logo.php" ?>
 
 <h1>Voters Not Politicians Field Team Database</h1>
-<?php
-echo "<h2>Captains Menu";
-$reg_team_filter = $_SESSION["reg_team_filter"];
-if (isset($reg_team_filter)) { echo ", Region-Team set to " . $reg_team_filter; }
-echo "</h2>"
-?>
+<h2>Captains Menu
+  <?php
+  $reg_team_filter = $_SESSION["reg_team_filter"];
+  if (isset($reg_team_filter)) { echo ", Region-Team set to " . $reg_team_filter; }
+  ?>
+</h2>
 <br>
 
 <nav

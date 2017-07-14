@@ -1,66 +1,125 @@
 <?php
 session_start();
-if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
-  include ('../../vnpftdb.php');
+$php_root = realpath($_SERVER["DOCUMENT_ROOT"]) . "/vnpftdb/php_code";
+include "$php_root/call_stack_functions.php";
+include "$php_root/db_config_ftdb.php";
+?>
+<?php
+if(isset($_GET["REG_TEAM"]) && !empty(trim($_GET["REG_TEAM"])) ) {
+  $reg_team = trim($_GET["REG_TEAM"]);
+  $sql  = "SELECT";
+  $sql .= " REG_TEAM";
+  $sql .= ", TERRITORY_NAME";
+  $sql .= " FROM reg_teams";
+  $sql .= " WHERE REG_TEAM = '$reg_team'";
 
-  $sql = "SELECT REG_TEAM, TERRITORY_NAME FROM reg_teams WHERE REG_TEAM = ?";
-  if($stmt = mysqli_prepare($db, $sql)){
-        mysqli_stmt_bind_param($stmt, "s", $param_id);
-        $param_id = trim($_GET["id"]);
-        if(mysqli_stmt_execute($stmt)){
-            $result = mysqli_stmt_get_result($stmt);
-            if(mysqli_num_rows($result) == 1){
-                $row       = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                $reg_team       = $row["REG_TEAM"];
-                $territory_name = $row["TERRITORY_NAME"];
-            } else{
-                header("location: teams_error.php");
-                exit();
-            }
-        } else{
-            echo "Oops! Something went wrong. Please try again later.";
-        }
-    }
-    mysqli_stmt_close($stmt);
-    mysqli_close($db);
-} else{
-    header("location: teams_error.php");
-    exit();
+	if($result = mysqli_query($ftdb, $sql)){
+	} else{
+		echo "ERROR: Could not able to execute $sql. " . mysqli_error($ftdb);
+	}
+  $row = mysqli_fetch_array($result);
+  $reg_team       = $row["REG_TEAM"];
+  $territory_name = $row["TERRITORY_NAME"];
+  mysqli_close($ftdb);
 }
 ?>
+
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>View Team Record</title>
-    <link rel="stylesheet" href="/vnpftdb/stylesheets/bootstrap.css">
-    <style type="text/css">
-        .wrapper{
-            width: 500px;
-            margin: 0 auto;
-        }
-    </style>
+  <?php include "$php_root/bootstrap_external_refs.php"; ?>
+  <title>View Team Record</title>
+  <link rel="icon" type="image/x-icon" href="/vnpftdb/images/favicon.ico" />
 </head>
+
+
 <body>
-    <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header">
-                        <h1>View Team</h1>
-                    </div>
-					<p> VNP Field Team Database</p>
-                    <div class="form-group">
-                        <label>Region-Team</label>
-                        <p class="form-control-static"><?php echo $row["REG_TEAM"]; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Territory Name</label>
-                        <p class="form-control-static"><?php echo $row["TERRITORY_NAME"]; ?></p>
-                    </div>
-                    <p><a href= <?php echo $_SERVER['HTTP_REFERER']; ?> class="btn btn-primary">Back</a></p>
-                </div>
-            </div>
-        </div>
+<?php if($_SESSION['debug'] == 'ON') { echo $_SESSION['call_stack'] . "<br><br>"; } ?>
+
+<div class="wrapper">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+
+<div class="page-header clearfix">
+  <div class = "form-group">
+    <div class = "col-sm-1">
+      <a
+        href  = "/vnpftdb/php_code/stack_return.php"
+        class = "btn btn-success"
+        >
+        Back
+      </a>
     </div>
+  </div>
+  <br>
+  <div class = "form-group">
+    <h1>VNP Field Team Database</h1>
+    <h2>View Region-Team Record: <?php echo $reg_team; ?></h2>
+  </div>
+</div>
+
+<form
+  name     = "mainForm"
+  class    = "form-horizontal"
+  method   = ""
+  onsubmit = ""
+  >
+
+<div class="form-group">
+  <label
+    class="control-label col-sm-3"
+    for="reg_team"
+    >
+    Region-Team:
+  </label>
+  <div class="col-sm-1">
+      <input
+        type  = "text"
+        name  = "reg_team"
+        class = "form-control"
+        value = "<?php echo $reg_team; ?>";
+        readonly
+        >
+  </div>
+</div>
+
+<div class="form-group">
+  <label
+    class="control-label col-sm-3"
+    for="territory_name"
+    >
+    Territory Name:
+  </label>
+  <div class="col-sm-4">
+      <input
+        type  = "text"
+        name  = "territory_name"
+        class = "form-control"
+        value = "<?php echo $territory_name; ?>";
+        readonly
+        >
+  </div>
+</div>
+
+<div class="form-group">
+
+  <div class = "col-sm-3">    </div>
+
+  <div class="col-sm-2">
+    <a
+      href="/vnpftdb/php_code/stack_return.php"
+      class="btn btn-default"
+      >
+      Back
+    </a>
+  </div>
+</div>
+
+</form>
+
+</div>  </div>  </div>  </div>
+
 </body>
+
 </html>

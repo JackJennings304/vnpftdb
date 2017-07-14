@@ -10,25 +10,15 @@ include "$php_root/call_stack_functions.php";
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/themes/cupertino/jquery-ui.css" type="text/css" media="all">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <?php include "$php_root/bootstrap_external_refs.php"; ?>
   <title>Sys Admin menu</title>
   <link rel="icon" type="image/x-icon" href="/vnpftdb/images/favicon.ico" />
 </head>
 
 <body>
-<?php $_SESSION["user_role"] = "sysadmin"; ?>
-<?php $_SESSION["called_by"] = "/vnpftdb/menus/sysadmin.php"; ?>
+<?php if($_SESSION['debug'] == 'ON') { echo $_SESSION['call_stack'] . "<br><br>"; } ?>
 
-<div
-  style="background-color:#33D"
-  overflow="hidden"
-  display="block"
-  >
-  <img src="../images/vnp_logo_400a.png">
-</div>
+<?php include "$php_root/header_logo.php" ?>
 
 <h1>Voters Not Politicians Field Team Database</h1>
 <h2>System Administrators Menu</h2>
@@ -55,7 +45,7 @@ include "$php_root/call_stack_functions.php";
   $anchor .= ">";
   $anchor .= "Regions List";
   $anchor .= "</a>";
-  echo $anchor
+  echo $anchor;
   ?>
 </div>
 
@@ -72,7 +62,7 @@ include "$php_root/call_stack_functions.php";
   $anchor .= ">";
   $anchor .= "Teams List";
   $anchor .= "</a>";
-  echo $anchor
+  echo $anchor;
   ?>
 
 </div>
@@ -90,7 +80,7 @@ include "$php_root/call_stack_functions.php";
   $anchor .= ">";
   $anchor .= "Captains List";
   $anchor .= "</a>";
-  echo $anchor
+  echo $anchor;
   ?>
 </div>
 
@@ -107,7 +97,7 @@ include "$php_root/call_stack_functions.php";
   $anchor .= ">";
   $anchor .= "Circulators List";
   $anchor .= "</a>";
-  echo $anchor
+  echo $anchor;
   ?>
 </div>
 

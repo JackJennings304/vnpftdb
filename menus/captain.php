@@ -302,7 +302,14 @@ include "$php_root/call_stack_functions.php";
 
 </div>
 </div>
-</div>
+</nav>
+
+<p>
+  <b>Petions List</b> - Use this option when checking in petition sheets that circulators have finished.
+</p>
+<p>
+  <b>Input/Update Multiple Petitions</b> - Use this option when receiving petitions or sending them out.
+</p>
 
 </body>
 

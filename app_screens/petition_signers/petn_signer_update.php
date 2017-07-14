@@ -39,7 +39,6 @@ $email_10  = "";
 
 if(isset($_POST["petn_num"]) && !empty($_POST["petn_num"])){
   $petn_num  =      $_POST["petn_num"];
-  #$line_num  =      $_POST["line_num"];
   $name_01   = trim($_POST["name_01"]);
   $phone_01  = trim($_POST["phone_01"]);
   $email_01  = trim($_POST["email_01"]);
@@ -70,7 +69,61 @@ if(isset($_POST["petn_num"]) && !empty($_POST["petn_num"])){
   $name_10   = trim($_POST["name_10"]);
   $phone_10  = trim($_POST["phone_10"]);
   $email_10  = trim($_POST["email_10"]);
+  if(isset($_POST["copy_cnts_to_petn"]) && !empty($_POST["copy_cnts_to_petn"])) {
+    $copy_cnts_to_petn = trim($_POST["copy_cnts_to_petn"]);
+  } else {
+    $copy_cnts_to_petn = "";
+  }
+  if ($copy_cnts_to_petn == "1") {
+    $sign_cnt   = 0;
+    $phone_cnt  = 0;
+    $email_cnt  = 0;
+    if ( $name_01   != "") { $sign_cnt++;   }
+    if ( $name_02   != "") { $sign_cnt++;   }
+    if ( $name_03   != "") { $sign_cnt++;   }
+    if ( $name_04   != "") { $sign_cnt++;   }
+    if ( $name_05   != "") { $sign_cnt++;   }
+    if ( $name_06   != "") { $sign_cnt++;   }
+    if ( $name_07   != "") { $sign_cnt++;   }
+    if ( $name_08   != "") { $sign_cnt++;   }
+    if ( $name_09   != "") { $sign_cnt++;   }
+    if ( $name_10   != "") { $sign_cnt++;   }
+    if ( $sign_cnt  == 0)  { $sign_cnt  = "NULL"; }
 
+    if ( $phone_01  != "") { $phone_cnt++;  }
+    if ( $phone_02  != "") { $phone_cnt++;  }
+    if ( $phone_03  != "") { $phone_cnt++;  }
+    if ( $phone_04  != "") { $phone_cnt++;  }
+    if ( $phone_05  != "") { $phone_cnt++;  }
+    if ( $phone_06  != "") { $phone_cnt++;  }
+    if ( $phone_07  != "") { $phone_cnt++;  }
+    if ( $phone_08  != "") { $phone_cnt++;  }
+    if ( $phone_91  != "") { $phone_cnt++;  }
+    if ( $phone_10  != "") { $phone_cnt++;  }
+    if ( $phone_cnt == 0)  { $phone_cnt = "NULL"; }
+
+    if ( $email_01  != "") { $email_cnt++;  }
+    if ( $email_02  != "") { $email_cnt++;  }
+    if ( $email_03  != "") { $email_cnt++;  }
+    if ( $email_04  != "") { $email_cnt++;  }
+    if ( $email_05  != "") { $email_cnt++;  }
+    if ( $email_06  != "") { $email_cnt++;  }
+    if ( $email_07  != "") { $email_cnt++;  }
+    if ( $email_08  != "") { $email_cnt++;  }
+    if ( $email_09  != "") { $email_cnt++;  }
+    if ( $email_10  != "") { $email_cnt++;  }
+    if ( $email_cnt == 0)  { $email_cnt = "NULL"; }
+
+    $sql  = "UPDATE petitions SET";
+    $sql .= "  sign_cnt  = $sign_cnt";
+    $sql .= ", phone_cnt = $phone_cnt";
+    $sql .= ", email_cnt = $email_cnt";
+    $sql .= " WHERE petn_num = $petn_num";
+  	if(mysqli_query($ftdb, $sql)) {
+    } else {
+  		echo "ERROR: Could not execute $sql. " . mysqli_error($ftdb);
+  	}
+  }
   # Update line 1
   $sql  = "UPDATE petition_signers SET";
 	$sql .= "  name      = "; if ($name_01  === "" ) { $sql .= "NULL"; } else { $sql .= "'$name_01'";  }
@@ -264,7 +317,11 @@ mysqli_close($ftdb);
 <div class="row">
 <div class="col-md-12">
 
-<div class="page-header">
+<form
+  class  = "form-horizontal"
+  method = "post"
+  >
+
   <div class = "form-group">
     <div class = "col-sm-1">
       <a
@@ -274,15 +331,26 @@ mysqli_close($ftdb);
       Main Menu
       </a>
     </div>
+    <div class = "col-sm-4"> </div>
+    <label
+      class   = "control-label col-sm-2"
+      for     = "copy_cnts_to_petn"
+      >
+      Copy Counts to Petitions Record
+    </label>
+    <div class = "col-sm-1">
+      <input
+        type    = "checkbox"
+        name    = "copy_cnts_to_petn"
+        class   = "form-control"
+        value   = "1"
+        >
+    </div>
   </div>
-  <br>
-  <h2>Update Signers, Phones, Emails, Petition # <?php echo $petn_num; ?></h2>
-</div>
-
-<form
-  class="form-horizontal"
-  method="post"
-  >
+  <br><br>
+  <div class = "form-group">
+    <h2>Update Signers, Phones, Emails, Petition # <?php echo $petn_num; ?></h2>
+  </div>
 
 <div class="form-group">
   <label

@@ -27,20 +27,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	if ($circ_trained === "1") { $sql .= "1";     } else { $sql .= "0";              }
 	$sql .= ")";
 	if(mysqli_query($ftdb, $sql)){
-        include "$php_root/stack_return_within_php.php";
-        exit();
 	} else{
 		echo "ERROR: Could not able to execute $sql. " . mysqli_error($ftdb);
 	}
-    mysqli_close($ftdb);
+  mysqli_close($ftdb);
+  include "$php_root/stack_return_within_php.php";
+  exit();
 }
 ?>
 
 <html>
+
 <head>
   <?php include "$php_root/bootstrap_external_refs.php"; ?>
   <title>Create Circulator</title>
   <link rel="icon" type="image/x-icon" href="/vnpftdb/images/favicon.ico" />
+  <script>
+  function validateForm() {
+  }
+  </script>
 </head>
 
 <body>
@@ -68,8 +73,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </div>
 
 <form
-  class = "form-horizontal"
-  method = "post"
+  name     = "mainForm"
+  class    = "form-horizontal"
+  method   = "post"
+  onsubmit = "return validateForm()"
   >
 
 <div class="form-group">
@@ -171,20 +178,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
 </div>
 
-<input
-  type  = "submit"
-  class = "btn btn-primary"
-  value = "Submit"
-  >
+<div class="form-group">
 
-<a
-  href  = "/vnpftdb/php_code/stack_return.php"
-  class = "btn btn-default"
-  >
-  Cancel
-</a>
+  <div class = "col-sm-3">    </div>
+  <div class="col-sm-2">
+    <input
+      type  = "submit"
+      class = "btn btn-primary"
+      value = "Submit"
+      >
+
+    <a
+      href  = "/vnpftdb/php_code/stack_return.php"
+      class = "btn btn-default"
+      >
+      Cancel
+    </a>
+  </div>
+</div>
 
 </form>
+
 </div>  </div>  </div>  </div>
+
 </body>
+
 </html>

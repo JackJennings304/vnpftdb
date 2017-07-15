@@ -29,7 +29,7 @@ if ( isset($_GET["NAME"]) && !empty(trim($_GET["NAME"])) ) {
 
 <head>
   <?php include "$php_root/bootstrap_external_refs.php"; ?>
-  <title>View Team Record</title>
+  <title>View Captain Record</title>
   <link rel="icon" type="image/x-icon" href="/vnpftdb/images/favicon.ico" />
 </head>
 

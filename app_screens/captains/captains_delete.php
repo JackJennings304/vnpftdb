@@ -23,7 +23,7 @@ if ( isset($_POST["name"]) && !empty($_POST["name"]) ) {
 
 <head>
   <?php include "$php_root/bootstrap_external_refs.php"; ?>
-  <title>Delete Region-Team Record</title>
+  <title>Delete Captain Record</title>
   <link rel="icon" type="image/x-icon" href="/vnpftdb/images/favicon.ico" />
 
   <script>

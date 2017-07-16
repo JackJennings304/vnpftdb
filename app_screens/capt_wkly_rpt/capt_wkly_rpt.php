@@ -59,8 +59,8 @@ if($result = mysqli_query($ftdb, $sql)){
     echo "<tr>";
     echo "<th></th>";
 		echo "<th>Week</th>";
-		echo "<th>Start Date</th>";
-		echo "<th>End Date</th>";
+		echo "<th>Start&nbsp;Date&nbsp;&nbsp;</th>";
+		echo "<th>End&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;</th>";
 		echo "<th>Shifts Scheduled</th>";
 		echo "<th>Shifts Fulfilled</th>";
 		echo "<th>Recruiting Calls Made</th>";

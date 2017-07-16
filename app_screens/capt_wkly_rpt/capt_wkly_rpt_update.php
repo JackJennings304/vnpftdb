@@ -107,7 +107,7 @@ mysqli_close($ftdb);
 
 <div class="form-group">
   <label
-    class = "control-label col-sm-2"
+    class = "control-label col-sm-3"
     for   = "reg_team"
     >
     Region-Team (pre-set)
@@ -125,7 +125,7 @@ mysqli_close($ftdb);
 
 <div class="form-group">
   <label
-    class = "control-label col-sm-2"
+    class = "control-label col-sm-3"
     for   = "week"
     >
     Week (pre-set)
@@ -143,7 +143,7 @@ mysqli_close($ftdb);
 
 <div class="form-group">
   <label
-    class = "control-label col-sm-2"
+    class = "control-label col-sm-3"
     for   = "shifts_scheduled"
     >
     Shifts Scheduled
@@ -160,7 +160,7 @@ mysqli_close($ftdb);
 
 <div class="form-group">
   <label
-    class = "control-label col-sm-2"
+    class = "control-label col-sm-3"
     for   = "shifts_fulfilled"
     >
     Shifts Fulfilled
@@ -177,7 +177,7 @@ mysqli_close($ftdb);
 
 <div class="form-group">
   <label
-    class = "control-label col-sm-2"
+    class = "control-label col-sm-3"
     for   = "recruiting_calls_made"
     >
     Recruiting Calls Made
@@ -194,7 +194,7 @@ mysqli_close($ftdb);
 
 <div class="form-group">
   <label
-    class = "control-label col-sm-2"
+    class = "control-label col-sm-3"
     for   = "volunteers_recruited"
     >
     Volunteers Recruited
@@ -211,7 +211,7 @@ mysqli_close($ftdb);
 
 <div class="form-group">
   <label
-    class = "control-label col-sm-2"
+    class = "control-label col-sm-3"
     for   = "volunteers_trained"
     >
     Volunteers Trained
@@ -228,7 +228,7 @@ mysqli_close($ftdb);
 
 <div class="form-group">
   <label
-    class = "control-label col-sm-2"
+    class = "control-label col-sm-3"
     for   = "petitions_on_hand"
     >
     Petitions on hand
@@ -245,7 +245,7 @@ mysqli_close($ftdb);
 
 <div class="form-group">
   <label
-    class = "control-label col-sm-2"
+    class = "control-label col-sm-3"
     for   = "clipboards_on_hand"
     >
     Clipboards on hand
@@ -262,7 +262,7 @@ mysqli_close($ftdb);
 
 <div class="form-group">
   <label
-    class = "control-label col-sm-2"
+    class = "control-label col-sm-3"
     for   = "buttons_on_hand"
     >
     Buttons on hand
@@ -278,8 +278,7 @@ mysqli_close($ftdb);
 </div>
 
 <div class = "Form-group">
-  <div class = "col-sm-2">
-  </div>
+  <div class = "col-sm-3">   </div>
   <div class = "col-sm-2">
     <input
       type  = "submit"

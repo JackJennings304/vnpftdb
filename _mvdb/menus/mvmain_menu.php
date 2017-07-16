@@ -5,18 +5,18 @@ include "$php_root/call_stack_functions.php";
 ?>
 <?php call_stack_clear(); ?>
 <?php call_stack_add(who_am_i()); ?>
+<?php $_SESSION['Cur_top_menu'] = "/vnpftdb/menus/captain.php"; ?>
+
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/themes/cupertino/jquery-ui.css" type="text/css" media="all">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <?php include "$php_root/bootstrap_external_refs.php"; ?>
   <title>MI Voters Main Menu</title>
-  <link rel="icon" type="image/x-icon" href="/vnpftdb/images/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="/vntftdb/images/favicon.ico" />
 </head>
 
 <body>
+<?php if($_SESSION['debug'] == 'ON') { echo $_SESSION['call_stack'] . "<br><br>"; } ?>
 
 <?php include "$php_root/header_logo.php" ?>
 
@@ -28,24 +28,28 @@ include "$php_root/call_stack_functions.php";
 <nav
   class="navbar navbar-default"
   style = "background-color:#33D"
->
+  >
 <div class="container-fluid">
 <div class="row" style="background-color:#33D; padding-top:5px">
-<!---------------------------------------------------------->
+
 <div class="col-sm-2">
-    <a
-      href="/vnpftdb/php_code/stack_call.php?child=/vnpftdb/_mvdb/app_screens/mv_lookup/mvlookup_get_parms.php"
-      class="btn btn-sm btn-default"
-      style="background-color: buttonface"
-    >
-    MI Voter Lookup
-    </a>
+  <?php
+  $anchor  = "<a";
+  $anchor .= " href='";
+  $anchor .= "/vnpftdb/php_code/stack_call.php?";
+  $anchor .= "child=";
+  $anchor .= "/vnpftdb/_mvdb/app_screens/mv_lookup/mvlookup_get_parms.php";
+  $anchor .= "'";
+  $anchor .= ' class = "btn btn-sm btn-default"';
+  $anchor .= ' style = "background-color: buttonface"';
+  $anchor .= ">";
+  $anchor .= "MI Voter Lookup";
+  $anchor .= "</a>";
+  echo $anchor
+  ?>
 </div>
 
-
-<!---------------------------------------------------------->
-</div>
-</div>
+</div>  </div>
 
 </body>
 

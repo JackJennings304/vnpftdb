@@ -62,11 +62,11 @@ $sql .= " FROM captains";
 $sql .= " ORDER BY NAME";
 if($result = mysqli_query($ftdb, $sql)){
   if(mysqli_num_rows($result) > 0) {
-    echo '<div class = "col-sm-4">';
+    echo '<div class = "col-sm-6">';
     echo "<table class='table table-bordered table-striped'>";
 		echo "<thead>";
     echo "<tr>";
-    echo '<th style="width:30px"></th>';
+    echo '<th style="width:60px"></th>';
     echo "<th style='width:30px'>Name</th>";
     echo "<th>Reg-Team</th>";
     echo "<th>Nation Builder ID</th>";

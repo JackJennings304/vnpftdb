@@ -4,15 +4,14 @@ $root = realpath($_SERVER["DOCUMENT_ROOT"]);
 include "$root/vnpftdb/php_code/call_stack_functions.php";
 include "$root/vnpftdb/php_code/db_config_mvdb.php";
 
-$partition_name         = $partition_name_err        = "";
-$last_name_starts_with  = $last_name_starts_with_err = "";
+$partition_name         = "";
+$last_name_starts_with  = "";
 
-if(isset($_POST["id"]) && !empty($_POST["id"])){
-  $id            = $_POST["id"];
+if ( $_SERVER["REQUEST_METHOD"] == "POST" ) {
   $partition_name         = trim($_POST["partition_name"]);
   $last_name_starts_with  = trim($_POST["last_name_starts_with"]);
   $header_str  = "?";
-  $header_str .= "partition="    . $partition_name;
+  $header_str .= "partition="  . $partition_name;
   $header_str .= "&last_name=" . $last_name_starts_with;
   mysqli_close($mvdb);
   header("Location: mvlookup.php" . $header_str);
@@ -20,13 +19,16 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 ?>
 
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>MI Voter Lookup</title>
-    <?php include "$root/vnpftdb/php_code/bootstrap_external_refs.php"; ?>
+  <title>MI Voter Lookup</title>
+  <?php include "$root/vnpftdb/php_code/bootstrap_external_refs.php"; ?>
+  <link rel="icon" type="image/x-icon" href="/vntftdb/images/favicon.ico" />
 </head>
 
 <body>
+<?php if($_SESSION['debug'] == 'ON') { echo $_SESSION['call_stack'] . "<br><br>"; } ?>
+
 <div class="wrapper">
 <div class="container-fluid">
 <div class="row">
@@ -37,27 +39,30 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 </div>
 
 <form
-  class="form-horizontal"
-  method="post"
+  class  = "form-horizontal"
+  method = "post"
 >
+
 <div class="form-group">
   <label
-    class="control-label col-sm-2"
+    class="control-label col-sm-3"
     for="partition_name"
   >
     County:
   </label>
-
   <div class="col-sm-3">
 	  <select
       required
-      type = "text"
-      name="partition_name"
-      class="form-control"
+      type        = "text"
+      name        = "partition_name"
+      class       = "form-control"
       placeholder = "Enter County Code"
     >
 	  <?php
-    $sql  = "SELECT county_name, code, partition_name";
+    $sql  = "SELECT";
+    $sql .= "  county_name";
+    $sql .= ", code";
+    $sql .= ", partition_name";
     $sql .= " FROM mi_counties";
     $sql .= " WHERE enable_display = 'Y'";
     $slq .= " ORDER BY county_name";
@@ -73,48 +78,50 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 	  mysqli_close($mvdb);
 	  ?>
 	 </select>
-
   </div>
 </div>
 
-  <div class="form-group">
-    <label
-      class="control-label col-sm-2"
-      for="last_name_starts_with"
+<div class="form-group">
+  <label
+    class="control-label col-sm-3"
+    for="last_name_starts_with"
+  >
+    Last Name starts with:
+  </label>
+  <div class = "col-sm-3">
+    <input
+      type        = "text"
+      class       = "form-control"
+      name        = "last_name_starts_with"
+      placeholder = "Enter the beginning of the last name"
+      required
     >
-      Last Name starts with:
-    </label>
-    <div class="col-sm-3">
-      <input
-        type="text"
-        class="form-control"
-        id="last_name_starts_with"
-        name = "last_name_starts_with"
-        placeholder="Enter the beginning of the last name"
-        required
+  </div>
+</div>
+
+<div class = "form-group"> </div>
+
+<div class = "form-group">
+  <div class = "col-sm-3"> </div>
+  <div class = "col-sm-2">
+    <button
+      type  = "submit"
+      class = "btn btn-default"
       >
-    </div>
+      Submit
+    </button>
   </div>
-
-  <input type="hidden" name="id" value="Post"/>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Submit</button>
-    </div>
+  <div class="col-sm-2">
+    <a
+      href  = "/vnpftdb/php_code/stack_return.php"
+      class = "btn btn-default"
+      >
+      Cancel
+    </a>
   </div>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <a
-        href="/vnpftdb/_mvdb/menus/mvmain_menu.php"
-        class="btn btn-default">Cancel
-      </a>
-    </div>
-  </div>
+</div>
 
 </form>
-
 
 </div>  </div>  </div>  </div>
 

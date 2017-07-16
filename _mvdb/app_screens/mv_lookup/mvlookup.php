@@ -1,5 +1,5 @@
-<?php session_start(); ?>
 <?php
+session_start();
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
 include "$root/vnpftdb/php_code/call_stack_functions.php";
 include "$root/vnpftdb/php_code/db_config_mvdb.php";
@@ -8,6 +8,7 @@ $last_name = $_GET["last_name"];
 ?>
 
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>MI VotersRegions</title>
@@ -24,35 +25,51 @@ $last_name = $_GET["last_name"];
 <div class="col-md-12">
 
 <div class="page-header clearfix">
-  <a
-    href="../../menus/mvmain_menu.php"
-    class="btn btn-success pull-right"
-  >
-  Back
-  </a>
-  <a
-    href="mvlookup_get_parms.php"
-    class="btn btn-success"
-  >
-  Another Search
-  </a>
-	<br><br><br>
-  <h2 class="pull-left">MI Voters</h2><br><br><br><br>
-  <p>County = <?php echo $partition; ?></p>
-  <p>Last Name starts with: <?php echo $last_name; ?> </p>
+  <div class = "form-group">
+    <div class = "col-sm-2">
+      <?php
+      $anchor  = "<a";
+      $anchor .= " href='";
+      $anchor .= "/vnpftdb/_mvdb/app_screens/mv_lookup/mvlookup_get_parms.php";
+      $anchor .= "'";
+      $anchor .= ' class = "btn btn-success"';
+      $anchor .= ">";
+      $anchor .= "Another Search";
+      $anchor .= "</a>";
+      echo $anchor
+      ?>
+    </div>
+    <div class="col-sm-2">
+      <a
+        href  = "/vnpftdb/php_code/stack_return.php"
+        class = "btn btn-default"
+        >
+        Back
+      </a>
+    </div>
+  </div>
+  <div class = "form-group">
+	  <br><br><br>
+    <h2 class="pull-left">MI Voters</h2><br><br><br><br>
+    <p>County = <?php echo $partition; ?></p>
+    <p>Last Name starts with: <?php echo $last_name; ?> </p>
+  </div>
 </div>
+
 <?php
 $sql  = "SELECT";
-$sql .= " last_name, first_name,";
-$sql .= ' middle_name, name_suffix, birthyear, gender, date_of_registration,';
-$sql .= ' house_number_character, residence_street_number, house_suffix, pre_direction,';
-$sql .= ' street_name, street_type, suffix_direction, residence_extension, city, state,';
-$sql .= ' zip, mail_address_1, mail_address_2, mail_address_3, mail_address_4, mail_address_5,';
-$sql .= ' voter_id, county_code, jurisdiction, ward_precinct, school_code, state_house,';
-$sql .= ' state_senate, us_congress, county_commissioner, village_code, village_precinct,';
-$sql .= ' school_precinct, permanent_absentee_ind, status_type, uocava_status';
-$sql .= " FROM mi_voters";
-$sql .= " PARTITION(" . $partition . ")";
+$sql .= "  last_name";
+$sql .= ", first_name";
+$sql .= ', middle_name';
+$sql .= ', name_suffix, birthyear, gender, date_of_registration';
+$sql .= ', house_number_character, residence_street_number, house_suffix, pre_direction';
+$sql .= ', street_name, street_type, suffix_direction, residence_extension, city, state';
+$sql .= ', zip, mail_address_1, mail_address_2, mail_address_3, mail_address_4, mail_address_5';
+$sql .= ', voter_id, county_code, jurisdiction, ward_precinct, school_code, state_house';
+$sql .= ', state_senate, us_congress, county_commissioner, village_code, village_precinct';
+$sql .= ', school_precinct, permanent_absentee_ind, status_type, uocava_status';
+$sql .= ' FROM mi_voters';
+$sql .= ' PARTITION(' . $partition . ')';
 $sql .= ' WHERE last_name like "' . $last_name . '%"';
 $sql .= ' ORDER BY last_name, first_name';
 if($result = mysqli_query($mvdb, $sql)){
@@ -60,7 +77,6 @@ if($result = mysqli_query($mvdb, $sql)){
     echo "<table class='table table-bordered table-striped'>";
 		echo "<thead>";
     echo "<tr>";
-    echo "<th></th>";
     echo "<th>Last Name</th>";
     echo "<th>First Name</th>";
     echo "<th>middle_name</th>";
@@ -104,9 +120,6 @@ if($result = mysqli_query($mvdb, $sql)){
     echo "<tbody>";
     while($row = mysqli_fetch_array($result)){
       echo "<tr>";
-      echo "<td>";
-      #echo "<a href='regions_read.php?id="  . $row['last_name'] ."' title='View Record'   data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
-      echo "</td>";
       echo "<td>" . $row['last_name']                . "</td>";
       echo "<td>" . $row['first_name']               . "</td>";
       echo "<td>" . $row['middle_name']              . "</td>";
@@ -154,13 +167,13 @@ if($result = mysqli_query($mvdb, $sql)){
     echo "<p class='lead'><em>No records were found.</em></p>";
   }
 } else{
-  echo "ERROR: Could not able to execute $sql. " . mysqli_error($ftdb);
+  echo "ERROR: Could not able to execute $sql. " . mysqli_error($mvdb);
 }
 mysqli_close($mvdb);
 ?>
-</div>
-</div>
-</div>
-</div>
+
+</div>   </div>   </div>   </div>
+
 </body>
+
 </html>

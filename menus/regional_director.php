@@ -1,6 +1,6 @@
-<?php session_start(); ?>
 <?php
-# ToDo: Convert called routines to stack function.  Code the Gross and Net Leaderboard reports
+session_start();
+# ToDo: Code the Gross and Net Leaderboard reports
 $php_root = realpath($_SERVER["DOCUMENT_ROOT"]) . "/vnpftdb/php_code";
 include "$php_root/call_stack_functions.php";
 ?>

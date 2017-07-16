@@ -175,12 +175,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
   <script>
   function validateForm() {
-      var start_petn_num = document.forms["mainForm"]["starting_petition_num"].value;
-      var end_petn_num   = document.forms["mainForm"]["ending_petition_num"].value;
-      if (end_petn_num < start_petn_num) {
-        alert("Ending Petition number must be greater than Starting Petition number");
-        return false;
-      }
+    var start_petn_num = document.forms["mainForm"]["starting_petition_num"].value;
+    var end_petn_num   = document.forms["mainForm"]["ending_petition_num"].value;
+    if (end_petn_num < start_petn_num) {
+      alert("Ending Petition number must be greater than Starting Petition number");
+      return false;
+    }
+    var x = Number(start_petn_num) + Number(99);
+    if ( end_petn_num > x ) {
+      alert("Can only update at most 100 petitions at a time");
+      return false;
+    }
+    return true;
   }
   </script>
 

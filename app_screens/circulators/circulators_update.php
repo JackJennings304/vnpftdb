@@ -114,6 +114,7 @@ mysqli_close($ftdb);
       name  = "name"
       class ="form-control"
       value = "<?php echo $name; ?>"
+      readonly
       >
     </div>
 </div>

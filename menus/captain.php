@@ -36,7 +36,6 @@ include "$php_root/call_stack_functions.php";
 <div class="container-fluid">
 <div class="row" style="background-color:#33D; padding-top:9px">
 
-
 <div class="col-sm-2">
   <?php
   $anchor  = "<a";

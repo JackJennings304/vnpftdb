@@ -67,11 +67,6 @@ if ( $result = mysqli_query($ftdb, $sql) ) {
   if ( mysqli_num_rows($result) > 0 ) {
     echo '<div class = "col-md-10">';
     echo "<table class='table table-bordered table-striped'>";
-		echo "<col width='20' />";
-		echo "<col width='100' />";
-		echo "<col width='40' />";
-		echo "<col width='100' />";
-		echo "<col width='120' />";
 		echo "<thead>";
 		echo "<tr>";
     echo "<th></th>";

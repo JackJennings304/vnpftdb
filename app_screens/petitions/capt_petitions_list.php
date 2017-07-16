@@ -49,14 +49,15 @@ include "$php_root/db_config_ftdb.php";
   </div>
 </div>
 </div>
-  <br><br>
-  <h2 class = "pull-left">
-    Petitions List
-    <?php
-	  $reg_team_filter = $_SESSION["reg_team_filter"];
-	  if (isset($reg_team_filter)) { echo ", Region-Team set to " . $reg_team_filter; }
-	  ?>
-  </h2>
+
+<br><br>
+<h2 class = "pull-left">
+  Petitions List
+  <?php
+  $reg_team_filter = $_SESSION["reg_team_filter"];
+  if (isset($reg_team_filter)) { echo ", Region-Team set to " . $reg_team_filter; }
+  ?>
+</h2>
 
 <?php
 $sql  = "SELECT ";

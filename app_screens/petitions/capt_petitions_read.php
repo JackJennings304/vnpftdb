@@ -61,16 +61,10 @@ $sql .= " earliest_completed_dt";
 $sql .= " FROM petitions_v01";
 $sql .= " WHERE petn_num = " . $petn_num;
 if ($result = mysqli_query($ftdb, $sql)) {
-  if (mysqli_num_rows($result) == 1 ) {
-		$row = mysqli_fetch_array($result);
-  } else {
-    echo $sql;
-    header("location: petitions_error.php");
-    exit();
-  }
 } else {
 	echo "ERROR: Could not able to execute $sql. " . mysqli_error($ftdb);
 }
+$row = mysqli_fetch_array($result);
 mysqli_close($ftdb);
 ?>
 

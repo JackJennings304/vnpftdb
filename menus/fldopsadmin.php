@@ -2,6 +2,7 @@
 session_start();
 $php_root = realpath($_SERVER["DOCUMENT_ROOT"]) . "/vnpftdb/php_code";
 include "$php_root/call_stack_functions.php";
+$_SESSION['debug'] = 'OFF';
 ?>
 <?php call_stack_clear(); ?>
 <?php call_stack_add(who_am_i()); ?>
@@ -276,6 +277,40 @@ include "$php_root/call_stack_functions.php";
       $anchor .= ' style = ""';
       $anchor .= ">";
       $anchor .= "Region 13 Progress";
+      $anchor .= "</a>";
+      echo $anchor
+      ?>
+    </li>
+    <li>
+      <?php
+      # Region 14 Report - Statewide events
+      $anchor  = "<a";
+      $anchor .= " href='";
+      $anchor .= "/vnpftdb/php_code/stack_call.php?";
+      $anchor .= "child=";
+      $anchor .= "/vnpftdb/app_screens/progress_rpts/region_14.php";
+      $anchor .= "'";
+      $anchor .= ' class = ""';
+      $anchor .= ' style = ""';
+      $anchor .= ">";
+      $anchor .= "Region 14 Progress - Statewide events";
+      $anchor .= "</a>";
+      echo $anchor
+      ?>
+    </li>
+    <li>
+      <?php
+      # Region 99 Report
+      $anchor  = "<a";
+      $anchor .= " href='";
+      $anchor .= "/vnpftdb/php_code/stack_call.php?";
+      $anchor .= "child=";
+      $anchor .= "/vnpftdb/app_screens/progress_rpts/region_99.php";
+      $anchor .= "'";
+      $anchor .= ' class = ""';
+      $anchor .= ' style = ""';
+      $anchor .= ">";
+      $anchor .= "Region 99 Progress - Unassigned Captains";
       $anchor .= "</a>";
       echo $anchor
       ?>

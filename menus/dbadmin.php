@@ -2,6 +2,7 @@
 <?php
 $php_root = realpath($_SERVER["DOCUMENT_ROOT"]) . "/vnpftdb/php_code";
 include "$php_root/call_stack_functions.php";
+$_SESSION['debug'] = 'OFF';
 ?>
 
 <html>
@@ -36,7 +37,7 @@ include "$php_root/call_stack_functions.php";
     User Menus
     <span class="caret"></span>
   </button>
-  
+
   <ul class="dropdown-menu">
 
     <li>

@@ -47,12 +47,12 @@ include "$php_root/db_config_ftdb.php";
     </a>
   </div>
 </div>
-<div class = "form-group col-sm-2">
+<div class = "form-group col-sm-6">
 	<h2 class="pull-left">Progress Dates</h2>
 </div>
-<br><br><br><br>
-</div>
 
+
+<div class = "form-group col-sm-12"> </div>
 
 <?php
 $sql  = "SELECT";
@@ -116,6 +116,8 @@ mysqli_close($ftdb);
 ?>
 
 </div>   </div>   </div>   </div>
+
+</div>
 
 </body>
 

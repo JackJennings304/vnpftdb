@@ -79,7 +79,7 @@ $sql .= ", WK_21_GOAL, WK_22_GOAL, WK_23_GOAL, WK_24_GOAL, WK_25_GOAL";
 $sql .= ", WK_26_GOAL";
 $sql .= " FROM progress_weekly_goal";
 $sql .= " ORDER BY REGION";
-if ( $result = mysqli_query($fdb, $sql) ) {
+if ( $result = mysqli_query($ftdb, $sql) ) {
   if(mysqli_num_rows($result) > 0) {
     echo "<table class='table table-bordered table-striped'>";
 		echo "<thead>";
@@ -118,7 +118,15 @@ if ( $result = mysqli_query($fdb, $sql) ) {
 		while ( $row = mysqli_fetch_array($result) ) {
       echo "<tr>";
       echo "<td>";
-      echo "<a href='progress_wkly_goal_update.php?region="  . $row['REGION'] . "' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+      # update link
+      $anchor  = "<a href='/vnpftdb/php_code/stack_call_parms.php?";
+      $anchor .= "child=/vnpftdb/app_screens/progress_rpts_admin/progress_wkly_goal_update.php";
+      $anchor .= "&amp;parm1=region&amp;parm1_value="   . $row['REGION'];
+      $anchor .= "'";
+      $anchor .= ' title="Update Record" data-toggle="tooltip"';
+      $anchor .= ">";
+      $anchor .= "<span class='glyphicon glyphicon-pencil'></span></a>";
+      echo $anchor;
       echo "</td>";
       echo "<td>" . $row['REGION']       . "</td>";
       echo "<td>" . $row['WK_01_GOAL']   . "</td>";

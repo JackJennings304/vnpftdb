@@ -47,10 +47,10 @@ include "$php_root/db_config_ftdb.php";
     </a>
   </div>
 </div>
-<div class = "col-sm-2">
-  <br><br><br>
+<div class = "form-group col-sm-2">
 	<h2 class="pull-left">Progress Dates</h2>
 </div>
+<br><br><br><br>
 </div>
 
 
@@ -62,7 +62,8 @@ $sql .= ", MEAS_WEEK";
 $sql .= " FROM progress_dates";
 $sql .= " ORDER BY MEAS_DATE";
 if($result = mysqli_query($ftdb, $sql)){
-  if(mysqli_num_rows($result) > 0){
+  if ( mysqli_num_rows($result) > 0 ) {
+    echo '<div class = "form-group col-sm-4">';
     echo "<table class='table table-bordered table-striped'>";
 		echo "<thead>";
     echo "<tr>";
@@ -103,6 +104,7 @@ if($result = mysqli_query($ftdb, $sql)){
     }
     echo "</tbody>";
     echo "</table>";
+    echo "</div>";
     mysqli_free_result($result);
   } else{
     echo "<p class='lead'><em>No records were found.</em></p>";

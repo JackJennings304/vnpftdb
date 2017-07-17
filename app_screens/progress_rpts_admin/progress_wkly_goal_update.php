@@ -1,8 +1,5 @@
 <?php
 session_start();
-include ('../../vnpftdb.php');
-<?php
-session_start();
 $php_root = realpath($_SERVER["DOCUMENT_ROOT"]) . "/vnpftdb/php_code";
 include "$php_root/call_stack_functions.php";
 include "$php_root/db_config_ftdb.php";

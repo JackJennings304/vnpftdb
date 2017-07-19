@@ -37,7 +37,7 @@ include "$php_root/db_config_ftdb.php";
 <br><br>
 <h1>Captain Leaderboard Report - Unverified Signatures<br></h1>
 
-<div class = "col-md-4">
+<div class = "col-md-6">
   <?php
   $sql  = "SELECT";
   $sql .= "  captain";

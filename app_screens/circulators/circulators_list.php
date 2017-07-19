@@ -59,7 +59,7 @@ $sql  = "SELECT";
 $sql .= "  NAME";
 $sql .= ", CITY";
 $sql .= ", REG_TEAM";
-$sql .= ", CIRC_NUM";
+$sql .= ", NB_ID";
 $sql .= ", CIRC_TRAINED";
 $sql .= " FROM circulators";
 $sql .= " ORDER BY NAME";
@@ -114,7 +114,7 @@ if ( $result = mysqli_query($ftdb, $sql) ) {
       echo "<td>" . $row['NAME']     . "</td>";
       echo "<td>" . $row['CITY']     . "</td>";
       echo "<td>" . $row['REG_TEAM'] . "</td>";
-			echo "<td>" . $row['CIRC_NUM'] . "</td>";
+			echo "<td>" . $row['NB_ID']    . "</td>";
 			echo "<td align='center'>";
 			if ($row['CIRC_TRAINED'] === "1") {echo "&#10004"; }
 			echo "</td>";

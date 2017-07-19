@@ -10,7 +10,7 @@ if ( isset($_GET["NAME"]) && !empty(trim($_GET["NAME"])) ) {
   $sql .= "  NAME";
   $sql .= ", CITY";
   $sql .= ", REG_TEAM";
-  $sql .= ", CIRC_NUM";
+  $sql .= ", NB_ID";
   $sql .= ", CIRC_TRAINED";
   $sql .= " FROM circulators";
   $sql .= " WHERE NAME = '$name'";
@@ -22,7 +22,7 @@ if ( isset($_GET["NAME"]) && !empty(trim($_GET["NAME"])) ) {
   $name     		= $row["NAME"];
   $city     		= $row["CITY"];
   $reg_team 		= $row["REG_TEAM"];
-  $circ_num 		= $row["CIRC_NUM"];
+  $nb_id    		= $row["NB_ID"];
 	$circ_trained = $row["CIRC_TRAINED"];
   mysqli_close($ftdb);
 }
@@ -126,16 +126,16 @@ if ( isset($_GET["NAME"]) && !empty(trim($_GET["NAME"])) ) {
 <div class="form-group">
   <label
     class="control-label col-sm-3"
-    for="circ_num"
+    for="nb_id"
     >
     NationBuilder ID or 0 (zero) for Guest Circulator:
   </label>
   <div class="col-sm-1">
       <input
         type  = "number"
-        name  = "circ_num"
+        name  = "nb_id"
         class = "form-control"
-        value = "<?php echo $circ_num; ?>";
+        value = "<?php echo $nb_id; ?>";
         readonly
         >
   </div>

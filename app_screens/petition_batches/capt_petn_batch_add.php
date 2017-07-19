@@ -311,7 +311,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       value=""
       >
 	  <?php
-	  $sql  = "SELECT circ_num, name, reg_team FROM circulators_v01";
+	  $sql  = "SELECT nb_id, name, reg_team FROM circulators_v01";
     $sql .= " WHERE reg_team = '" . $_SESSION["reg_team_filter"] . "'";
     $sql .= " ORDER BY name";
     include "$php_root/db_config_ftdb.php";
@@ -341,7 +341,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       value = ""
       >
 	  <?php
-	  $sql  = "SELECT circ_num, name, reg_team FROM circulators_v01";
+	  $sql  = "SELECT nb_id, name, reg_team FROM circulators_v01";
     $sql .= " ORDER BY name";
     include "$php_root/db_config_ftdb.php";
 	  $result = mysqli_query($ftdb, $sql);

@@ -319,17 +319,58 @@ $_SESSION['debug'] = 'OFF';
 </li>
 </div>
 
-<div class="col-sm-2">
+<div class="col-sm-3">
   <div class="dropdown">
     <button
       class       = "btn btn-sm dropdown-toggle"
       type        = "button"
       data-toggle = "dropdown"
       >
-      Progress Report Administration
+      Fld Ops Administration
     <span class = "caret"></span>
   </button>
+
   <ul class = "dropdown-menu">
+
+    <li>
+      <?php
+      # Refresh Checklist
+      $anchor  = "<a";
+      $anchor .= " href='";
+      $anchor .= "/vnpftdb/php_code/stack_call.php?";
+      $anchor .= "child=";
+      $anchor .= "/vnpftdb/app_screens/progress_rpts_admin/synch_nb_to_vnpftdb_list.php";
+      $anchor .= "'";
+      $anchor .= ' class = ""';
+      $anchor .= ' style = ""';
+      $anchor .= ">";
+      $anchor .= "Refresh vnpftdb from Nation Builder";
+      $anchor .= "</a>";
+      echo $anchor
+      ?>
+    </li>
+
+    <li class="divider"></li>
+
+    <li class="dropdown-header">Progress Goal Administration</li>
+
+    <li>
+      <?php
+      # Rebuild Progress Reports Data
+      $anchor  = "<a";
+      $anchor .= " href='";
+      $anchor .= "/vnpftdb/php_code/stack_call.php?";
+      $anchor .= "child=";
+      $anchor .= "/vnpftdb/php_programs/progress_reports_rebuild.php";
+      $anchor .= "'";
+      $anchor .= ' class = ""';
+      $anchor .= ' style = ""';
+      $anchor .= ">";
+      $anchor .= "Rebuild Progress Reports";
+      $anchor .= "</a>";
+      echo $anchor
+      ?>
+    </li>
     <li>
       <?php
       # Progress Dates
@@ -390,8 +431,8 @@ $_SESSION['debug'] = 'OFF';
       $anchor .= "child=";
       $anchor .= "/vnpftdb/reports/leaderboard/ldrbrd_statewide_gross.php";
       $anchor .= "'";
-      $anchor .= ' class = "btn btn-sm btn-default"';
-      $anchor .= ' style = "background-color: buttonface"';
+      $anchor .= ' class = ""';
+      $anchor .= ' style = ""';
       $anchor .= ">";
       $anchor .= "Statewide Leaderboard Report";
       $anchor .= "</a>";
@@ -407,8 +448,8 @@ $_SESSION['debug'] = 'OFF';
       $anchor .= "child=";
       $anchor .= "/vnpftdb/reports/leaderboard/ldrbrd_region_gross.php";
       $anchor .= "'";
-      $anchor .= ' class = "btn btn-sm btn-default"';
-      $anchor .= ' style = "background-color: buttonface"';
+      $anchor .= ' class = ""';
+      $anchor .= ' style = ""';
       $anchor .= ">";
       $anchor .= "Regional Leaderboard Report";
       $anchor .= "</a>";
@@ -424,8 +465,8 @@ $_SESSION['debug'] = 'OFF';
       $anchor .= "child=";
       $anchor .= "/vnpftdb/reports/leaderboard/ldrbrd_captain_gross.php";
       $anchor .= "'";
-      $anchor .= ' class = "btn btn-sm btn-default"';
-      $anchor .= ' style = "background-color: buttonface"';
+      $anchor .= ' class = ""';
+      $anchor .= ' style = ""';
       $anchor .= ">";
       $anchor .= "Captain Leaderboard Report";
       $anchor .= "</a>";
@@ -441,8 +482,8 @@ $_SESSION['debug'] = 'OFF';
       $anchor .= "child=";
       $anchor .= "/vnpftdb/reports/leaderboard/ldrbrd_circulator_gross.php";
       $anchor .= "'";
-      $anchor .= ' class = "btn btn-sm btn-default"';
-      $anchor .= ' style = "background-color: buttonface"';
+      $anchor .= ' class = ""';
+      $anchor .= ' style = ""';
       $anchor .= ">";
       $anchor .= "Circulator Leaderboard Report";
       $anchor .= "</a>";
@@ -462,8 +503,8 @@ $_SESSION['debug'] = 'OFF';
       $anchor .= "child=";
       $anchor .= "/vnpftdb/reports/leaderboard/ldrbrd_statewide_net.php";
       $anchor .= "'";
-      $anchor .= ' class = "btn btn-sm btn-default"';
-      $anchor .= ' style = "background-color: buttonface"';
+      $anchor .= ' class = ""';
+      $anchor .= ' style = ""';
       $anchor .= ">";
       $anchor .= "Statewide Leaderboard Report";
       $anchor .= "</a>";
@@ -479,8 +520,8 @@ $_SESSION['debug'] = 'OFF';
       $anchor .= "child=";
       $anchor .= "/vnpftdb/reports/leaderboard/ldrbrd_region_net.php";
       $anchor .= "'";
-      $anchor .= ' class = "btn btn-sm btn-default"';
-      $anchor .= ' style = "background-color: buttonface"';
+      $anchor .= ' class = ""';
+      $anchor .= ' style = ""';
       $anchor .= ">";
       $anchor .= "Regional Leaderboard Report";
       $anchor .= "</a>";
@@ -496,8 +537,8 @@ $_SESSION['debug'] = 'OFF';
       $anchor .= "child=";
       $anchor .= "/vnpftdb/reports/leaderboard/ldrbrd_captain_net.php";
       $anchor .= "'";
-      $anchor .= ' class = "btn btn-sm btn-default"';
-      $anchor .= ' style = "background-color: buttonface"';
+      $anchor .= ' class = ""';
+      $anchor .= ' style = ""';
       $anchor .= ">";
       $anchor .= "Captain Leaderboard Report";
       $anchor .= "</a>";
@@ -513,8 +554,8 @@ $_SESSION['debug'] = 'OFF';
       $anchor .= "child=";
       $anchor .= "/vnpftdb/reports/leaderboard/ldrbrd_circulator_net.php";
       $anchor .= "'";
-      $anchor .= ' class = "btn btn-sm btn-default"';
-      $anchor .= ' style = "background-color: buttonface"';
+      $anchor .= ' class = ""';
+      $anchor .= ' style = ""';
       $anchor .= ">";
       $anchor .= "Circulator Leaderboard Report";
       $anchor .= "</a>";

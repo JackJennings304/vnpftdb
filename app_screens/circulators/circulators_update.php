@@ -7,14 +7,14 @@ include "$php_root/db_config_ftdb.php";
 $name         = "";
 $city         = "";
 $reg_team     = "";
-$circ_num     = "";
+$nb_id        = "";
 $circ_trained = "";
 
 if ( isset($_POST["name"]) && !empty($_POST["name"]) ) {
 	$name     		= trim($_POST["name"]);
   $city     		= trim($_POST["city"]);
 	$reg_team 		= trim($_POST["reg_team"]);
-	$circ_num 		= trim($_POST["circ_num"]);
+	$nb_id    		= trim($_POST["nb_id"]);
 	$circ_trained = trim($_POST["circ_trained"]);
 
   $sql  = "UPDATE circulators SET";
@@ -22,8 +22,8 @@ if ( isset($_POST["name"]) && !empty($_POST["name"]) ) {
 	if ($city === ""           ) { $sql .= "NULL,"; } else { $sql .= " '$city',";     }
 	$sql .= " REG_TEAM = ";
 	if ($reg_team === ""       ) { $sql .= "NULL,"; } else { $sql .= " '$reg_team',"; }
-	$sql .= " CIRC_NUM = ";
-	if ($circ_num === ""       ) { $sql .= "NULL,"; } else { $sql .= " '$circ_num',"; }
+	$sql .= " NB_ID = ";
+	if ($nb_id    === ""       ) { $sql .= "NULL,"; } else { $sql .= " '$nb_id',"; }
 	$sql .= " CIRC_TRAINED = ";
 	if ($circ_trained === "1") { $sql .= "1";     } else { $sql .= "0";             }
 	$sql .= " WHERE NAME = '$name'";
@@ -58,7 +58,7 @@ $name = $_GET["NAME"];
 $sql  = "SELECT";
 $sql .= "  CITY";
 $sql .= ", REG_TEAM";
-$sql .= ", CIRC_NUM";
+$sql .= ", NB_ID";
 $sql .= ", CIRC_TRAINED";
 $sql .= " FROM circulators";
 $sql .= " WHERE NAME = '$name'";
@@ -66,7 +66,7 @@ $result    		= mysqli_query($ftdb, $sql);
 $row       		= mysqli_fetch_array($result);
 $city      		= $row["CITY"];
 $reg_team  		= $row["REG_TEAM"];
-$circ_num  		= $row["CIRC_NUM"];
+$nb_id     		= $row["NB_ID"];
 $circ_trained = $row["CIRC_TRAINED"];
 mysqli_close($ftdb);
 ?>
@@ -168,16 +168,16 @@ mysqli_close($ftdb);
 <div class="form-group">
   <label
     class = "control-label col-sm-3"
-    for   = "circ_num"
+    for   = "nb_id"
     >
     NationBuilder ID or 0 (zero) for Guest Circulator
   </label>
   <div class = "col-sm-3">
     <input
       type  = "number"
-      name  = "circ_num"
+      name  = "nb_id"
       class ="form-control"
-      value = "<?php echo $circ_num; ?>"
+      value = "<?php echo $nb_id; ?>"
       >
     </div>
 </div>

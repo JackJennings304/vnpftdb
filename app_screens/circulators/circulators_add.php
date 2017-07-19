@@ -7,23 +7,23 @@ include "$php_root/db_config_ftdb.php";
 $name         = "";
 $city         = "";
 $reg_team     = "";
-$circ_num     = "";
+$nb_id        = "";
 $circ_trained = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   $name     		= trim($_POST["name"]);
 	$city     		= trim($_POST["city"]);
 	$reg_team 		= trim($_POST["reg_team"]);
-	$circ_num 		= trim($_POST["circ_num"]);
+	$nb_id 	    	= trim($_POST["nb_id"]);
 	$circ_trained = trim($_POST["circ_trained"]);
 
 	$sql  = "INSERT INTO circulators";
-	$sql .= " (NAME, CITY, REG_TEAM, CIRC_NUM, CIRC_TRAINED)";
+	$sql .= " (NAME, CITY, REG_TEAM, NB_ID, CIRC_TRAINED)";
 	$sql .= " VALUES (";
 	$sql .= "'$name',";
 	if ($city         === "")  { $sql .= "NULL,"; } else { $sql .= " '$city',";      }
 	if ($reg_team     === "")  { $sql .= "NULL,"; } else { $sql .= " '$reg_team',";  }
-	if ($circ_num     === "")  { $sql .= "NULL,"; } else { $sql .= " '$circ_num',";  }
+	if ($nb_id        === "")  { $sql .= "NULL,"; } else { $sql .= " '$nb_id',";     }
 	if ($circ_trained === "1") { $sql .= "1";     } else { $sql .= "0";              }
 	$sql .= ")";
 	if(mysqli_query($ftdb, $sql)){
@@ -146,16 +146,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class="form-group">
   <label
     class = "control-label col-sm-3"
-    for   = "circ_num"
+    for   = "nb_id"
     >
     NationBuilder ID or 0 (zero) for Guest Circulator
   </label>
   <div class = "col-sm-3">
     <input
       type  = "number"
-      name  = "circ_num"
+      name  = "nb_id"
       class ="form-control"
-      value = "<?php echo $circ_num; ?>"
+      value = "<?php echo $nb_id; ?>"
       >
     </div>
 </div>

@@ -108,15 +108,15 @@ $petn_num = $_GET['petn_num'];
 
   <script>
   function validateForm() {
-      var sign_cnt     = document.forms["mainForm"]["sign_cnt"].value;
-      var phone_cnt    = document.forms["mainForm"]["phone_cnt"].value;
-      var email_cnt    = document.forms["mainForm"]["email_cnt"].value;
+      var sign_cnt     = parseInt(document.forms["mainForm"]["sign_cnt"].value);
+      var phone_cnt    = parseInt(document.forms["mainForm"]["phone_cnt"].value);
+      var email_cnt    = parseInt(document.forms["mainForm"]["email_cnt"].value);
       var cur_stage_id = document.forms["mainForm"]["cur_stage_id"].value;
       // sign_cnt must be >= phone_cnt and email_cnt
-      // if (sign_cnt < phone_cnt || sign_cnt < email_cnt) {
-      //  alert("Signer Count must be equal or larger than both Phone Count and Email Count");
-      //  return false;
-      //}
+      if ( (sign_cnt < phone_cnt) || (sign_cnt < email_cnt) ) {
+        alert("Signer Count must be equal or larger than both Phone Count and Email Count");
+        return false;
+      }
       // sign_cnt must be > 0 if cur_stage is past Captain, complete, on hand
       if ( (cur_stage_id == 6 || cur_stage_id == 8) && (sign_cnt == 0 || sign_cnt == "") ) {
         alert("Signer Count must be filled in if you are sending petitions past the Captain's stages");
